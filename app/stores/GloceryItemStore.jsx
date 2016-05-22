@@ -19,10 +19,9 @@ function GloceryItemStore() {
   function getItems() {
     return items;
   }
+
   function triggerListeners() {
-    listeners.forEach((listener) => {
-      listener(items);
-    });
+    listeners.map(listener => listener(items));
   }
 
   function deleteGloceryItem(item) {
