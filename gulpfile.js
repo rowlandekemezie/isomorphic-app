@@ -14,10 +14,16 @@ gulp.task('live-server', () => {
 
 gulp.task('serve', ['bundle', 'live-server'], () => {
   browserSync.init(null, {
-    proxy: 'http://localhost:7777',
+    proxy: 'http://localhost:8888',
     port: 9001,
   });
-  gulp.watch(['./app/*.ejs', './server/*.js']).on('change', browserSync.reload);
+  // gulp.watch(['./app/*.ejs', './app/**/*.jsx', './server/*.js'])
+  // .on('change', browserSync.reload);
+});
+
+gulp.task('watch', () => {
+  gulp.watch(['./app/*.ejs', './app/**/*.jsx', './server/*.js'], ['bundle'])
+  .on('change', browserSync.reload);
 });
 
 gulp.task('es6-transform', () => {
@@ -31,7 +37,7 @@ gulp.task('copy', () => {
   .pipe(gulp.dest('./.tmp'));
 });
 
-gulp.task('bundle', ['copy', 'es6-transform'], () =>
+gulp.task('bundle', ['copy'], () =>
    browserify({
      entries: './app/main.jsx',
      debug: true,
@@ -41,3 +47,5 @@ gulp.task('bundle', ['copy', 'es6-transform'], () =>
   .pipe(source('app.js'))
   .pipe(gulp.dest('./.tmp'))
 );
+
+gulp.task('default', ['watch', 'serve']);

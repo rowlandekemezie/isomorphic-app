@@ -2,3 +2,26 @@
   text-decoration:line-through;
   color: slategrey;
 }
+.grocery-addItem{
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+body {
+  padding-top: 3rem;
+}
+.purchased-true {
+  height: 40px;
+  background-color: green;
+}
+.purchased-false {
+  height: 40px;
+  background-color: red;
+}
+h1 {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+html {
+  color: darkslategray;
+  background-color: #fffefd;
+}

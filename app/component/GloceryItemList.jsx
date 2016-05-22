@@ -1,10 +1,6 @@
 const React = require('react');
 const GloceryItem = require('../component/GloceryItem.jsx');
-// const PropTypes = React.PropTypes;
-
-// import React, { PropTypes } from 'react'
-
-
+const GloceryListAddItem = require('../component/GloceryListAddItem.jsx');
 const GloceryItemList = (props) =>
    (
   <div>
@@ -14,6 +10,7 @@ const GloceryItemList = (props) =>
         <GloceryItem item={item} key={index} />
       )}
     </div>
+    <GloceryListAddItem />
   </div>
   );
 

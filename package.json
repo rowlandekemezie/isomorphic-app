@@ -45,10 +45,13 @@
     "ejs": "^2.4.1",
     "eslint-config-airbnb": "^9.0.1",
     "express": "^4.13.4",
+    "guid": "0.0.12",
     "gulp-babel": "^6.1.2",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "reactify": "^1.1.1",
+    "skeleton": "^0.1.2",
+    "skeleton-css": "^2.0.4",
     "vinyl-source-stream": "^1.1.0"
   }
 }
