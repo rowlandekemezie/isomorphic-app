@@ -10,7 +10,7 @@ module.exports = {
   dispatch: (payload) => {
     Object.keys(listeners).map(id => {
       const listener = listeners[id];
-      console.log(listener, id);
+      // console.log(listener, id);
       return listener(payload);
     }
   );

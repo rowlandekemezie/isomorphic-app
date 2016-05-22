@@ -40,7 +40,7 @@ function GloceryItemStore() {
     listeners.push(listener);
   }
   function setGloceryBought(item, isBought) {
-    const _item = items.filer(function(item){ return _item.name === item.name })[0];
+    const _item = items.filter(a => a.name === item.name )[0];
     item.purchased = isBought || false;
     triggerListeners();
   }

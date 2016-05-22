@@ -12,7 +12,8 @@ class GloceryItem extends React.Component {
     Action.delete(this.props.item);
   }
 
-  togglePurchased() {
+  togglePurchased(e) {
+    e.preventDefault();
     if (this.props.item.purchased){
       Action.unbuy(this.props.item);
     } else {
