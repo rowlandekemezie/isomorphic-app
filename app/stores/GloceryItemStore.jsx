@@ -1,11 +1,12 @@
 
 const dispatcher = require('./../dispatcher');
+const helpers = require('../helpers/RestHelpers');
 
 function GloceryItemStore() {
-  const items = [{
-    name: 'Ice cream',
-    purchased: true,
-  },
+  const items = [
+    { name: 'Ice cream',
+      purchased: true,
+    },
     {
       name: 'Shawarma',
       purchased: true,
@@ -15,6 +16,12 @@ function GloceryItemStore() {
       purchased: false,
     }];
   const listeners = [];
+
+  helpers.get('api/items')
+    .then((data) => {
+      items = data;
+      triggerListeners();
+    })
 
   function getItems() {
     return items;
@@ -47,6 +54,7 @@ function GloceryItemStore() {
   function addGloceryItem(item) {
     items.push(item);
     triggerListeners();
+    helpers.post('api/item', item);
   }
 
   dispatcher.register((event) => {
