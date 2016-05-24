@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function(router) {
   const items = [{
     name: 'Ice cream',
     purchased: true,
@@ -11,7 +11,7 @@ module.exports = function(app) {
       name: 'Burger',
       purchased: false,
     }];
-  app.route('/api/items ')
+  router.route('/items ')
     .get((req, res) => res.send(items, 'Awesome God. Glory to His name.'))
     .post((req, res) => {
       const item = req.body;
