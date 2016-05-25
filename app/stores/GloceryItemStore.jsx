@@ -1,29 +1,19 @@
 
 const dispatcher = require('./../dispatcher');
-
+const helpers = require('../helpers/RestHelpers');
+const $ = require('jquery');
 function GloceryItemStore() {
-  const items = [{
-    name: 'Ice cream',
-    purchased: true,
-  },
-    {
-      name: 'Shawarma',
-      purchased: true,
-    },
-    {
-      name: 'Burger',
-      purchased: false,
-    }];
+  let items = [];
   const listeners = [];
 
-  function getItems() {
-    return items;
-  }
   function triggerListeners() {
-    listeners.forEach((listener) => {
-      listener(items);
-    });
+    listeners.map(listener => listener(items));
   }
+
+  $.get('api/items').then(data => {
+    items = data;
+    triggerListeners();
+  });
 
   function deleteGloceryItem(item) {
     let index;
@@ -36,11 +26,15 @@ function GloceryItemStore() {
     triggerListeners();
   }
 
+  function getItems() {
+    return items;
+  }
+
   function onChange(listener) {
     listeners.push(listener);
   }
   function setGloceryBought(item, isBought) {
-    const _item = items.filer(function(item){ return _item.name === item.name })[0];
+    const _item = items.filter(a => a.name === item.name )[0];
     item.purchased = isBought || false;
     triggerListeners();
   }
@@ -48,6 +42,7 @@ function GloceryItemStore() {
   function addGloceryItem(item) {
     items.push(item);
     triggerListeners();
+    $.post('api/items', item);
   }
 
   dispatcher.register((event) => {
@@ -71,7 +66,6 @@ function GloceryItemStore() {
       }
     }
   });
-  return { onChange, getItems,
-  };
+  return { onChange, getItems };
 }
 module.exports = new GloceryItemStore();

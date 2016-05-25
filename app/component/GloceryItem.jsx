@@ -12,7 +12,8 @@ class GloceryItem extends React.Component {
     Action.delete(this.props.item);
   }
 
-  togglePurchased() {
+  togglePurchased(e) {
+    e.preventDefault();
     if (this.props.item.purchased){
       Action.unbuy(this.props.item);
     } else {
@@ -28,7 +29,7 @@ class GloceryItem extends React.Component {
           </h4>
         </div>
         <form className="three columns" onSubmit={this.togglePurchased}>
-          <button classeName={this.props.item.purchased ? "btn btn-primary" : ""}>
+          <button className={this.props.item.purchased ? "" : "button-primary"}>
             {this.props.item.purchased ? "Unbuy" : "Buy"}</button>
         </form>
         <form classeName="three columns" onSubmit={this.delete}>
