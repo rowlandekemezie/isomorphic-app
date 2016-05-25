@@ -1,25 +1,27 @@
 const $ = require('jquery');
 
-module.exports = {
+const helpers = {
   get: (url) => {
-    new Promise((success, error) => {
-      $.ajax({
-        dataType: 'json',
-        url: url,
-        success: success,
-        error: error,
-      });
+    new Promise ((success, error) => {
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      method: 'GET',
+      success: success,
+      error: error,
     });
-  },
-  post: (url, data) => {
+  })
+},
+   post: (url, data) => {
     new Promise((success, error) => {
       $.ajax({
-        type: 'POST',
+        method: 'POST',
         url: url,
-        data: data
+        data: data,
         success: success,
         error: error,
       });
     });
   },
 };
+module.exports = helpers;

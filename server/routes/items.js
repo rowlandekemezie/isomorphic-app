@@ -1,4 +1,4 @@
-module.exports = function(router) {
+function routes(router) {
   const items = [{
     name: 'Ice cream',
     purchased: true,
@@ -11,10 +11,12 @@ module.exports = function(router) {
       name: 'Burger',
       purchased: false,
     }];
-  router.route('/items ')
-    .get((req, res) => res.send(items, 'Awesome God. Glory to His name.'))
+  // console.log(items, 'Great day');
+  router.route('/items')
+    .get((req, res) => res.send(items))
     .post((req, res) => {
       const item = req.body;
       items.push(item);
     });
-};
+}
+module.exports = routes;
