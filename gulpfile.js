@@ -22,7 +22,7 @@ gulp.task('serve', ['bundle', 'live-server'], () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['./app/*.ejs', './app/**/*.jsx', './server/*.js'], ['bundle'])
+  gulp.watch(['./app/*.ejs', './app/**/*.jsx', './server/**/*.js'], ['bundle'])
   .on('change', browserSync.reload);
 });
 
