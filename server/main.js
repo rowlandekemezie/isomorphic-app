@@ -4,6 +4,8 @@ const parser = require('body-parser');
 const app = new express();
 const router = express.Router();
 require('./routes/items')(router);
+require('./models/GloceryItem');
+require('./database');
 // routes(router);
 app.get('/', (req, res) => {
   res.render('../app/index.ejs', {});
