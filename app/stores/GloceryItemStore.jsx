@@ -1,7 +1,8 @@
 
 const dispatcher = require('./../dispatcher');
-// const helpers = require('../helpers/RestHelpers');
+const helpers = require('../helpers/RestHelpers');
 const $ = require('jquery');
+
 function GloceryItemStore() {
   let items = [];
   const listeners = [];
@@ -14,7 +15,7 @@ function GloceryItemStore() {
     listeners.map(listener => listener(items));
   }
 
-  $.get('api/items').then(data => {
+  $.get('/api/items').then(data => {
     items = data;
     triggerListeners();
   });
@@ -28,10 +29,7 @@ function GloceryItemStore() {
     });
     items.splice(index, 1);
     triggerListeners();
-  }
-
-  function getItems() {
-    return items;
+    helpers.del('/api/items/'.concat(item._id));
   }
 
   function onChange(listener) {
@@ -41,12 +39,13 @@ function GloceryItemStore() {
     const _item = items.filter(a => a.name === item.name )[0];
     item.purchased = isBought || false;
     triggerListeners();
+    helpers.patch('/api/items/'.concat(item._id), item);
   }
 
   function addGloceryItem(item) {
     items.push(item);
     triggerListeners();
-    $.post('api/items', item);
+    $.post('/api/items', item);
   }
 
   dispatcher.register((event) => {

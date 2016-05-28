@@ -50,6 +50,7 @@
     "guid": "0.0.12",
     "gulp-babel": "^6.1.2",
     "jquery": "^2.2.4",
+    "mongoose": "^4.4.19",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "reactify": "^1.1.1",
