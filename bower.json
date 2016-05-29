@@ -1,0 +1,27 @@
+{
+  "name": "isomorphic-app",
+  "description": "An application to demonstrate isomorphism using react and express",
+  "main": "index.js",
+  "authors": [
+    "Rowland Ekemezie"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "React",
+    "Express",
+    "Isomorphism",
+    "Server"
+  ],
+  "homepage": "https://github.com/andela-rekemezie/isomorphic-app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.0.2",
+    "skeleton": "^2.0.4"
+  }
+}
