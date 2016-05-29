@@ -11,7 +11,7 @@ module.exports = {
       });
     });
   },
-  del: (url, data) => {
+  del: (url) => {
     new Promise((success, error) => {
       $.ajax({
         url: url,
@@ -21,7 +21,7 @@ module.exports = {
       });
     });
   },
-  patch: (url) => {
+  patch: (url, data) => {
     new Promise((success, error) => {
       $.ajax({
         type: 'PATCH',

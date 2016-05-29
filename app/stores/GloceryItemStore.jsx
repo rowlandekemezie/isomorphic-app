@@ -24,7 +24,7 @@ function GloceryItemStore() {
     let index;
     items.filter(function(_item, _index) {
       if (_item.name === item.name) {
-        index === _index;
+        index = _index;
       }
     });
     items.splice(index, 1);
