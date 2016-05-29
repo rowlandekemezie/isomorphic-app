@@ -12,4 +12,3 @@ GloceryItemStore.onChange((items) => {
   initial = items;
   render();
 });
-render();

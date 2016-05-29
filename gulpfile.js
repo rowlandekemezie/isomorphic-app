@@ -2,7 +2,6 @@ const LiveServer = require('gulp-live-server');
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
 const babelify = require('babelify');
-const babel = require('gulp-babel');
 const browserify = require('browserify');
 const reactify = require('reactify');
 const source = require('vinyl-source-stream');
@@ -17,19 +16,12 @@ gulp.task('serve', ['bundle', 'live-server'], () => {
     proxy: 'http://localhost:8888',
     port: 9001,
   });
-  // gulp.watch(['./app/*.ejs', './app/**/*.jsx', './server/*.js'])
-  // .on('change', browserSync.reload);
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['./app/*.ejs', './app/**/*.jsx', './server/**/*.js'], ['bundle'])
-  .on('change', browserSync.reload);
-});
-
-gulp.task('es6-transform', () => {
-  gulp.src('./server/*.(js|jsx)')
-    .pipe(babel())
-    .pipe(gulp.dest('./dest/temp'));
+  gulp.watch('./app/*.ejs', ['bundle'], browserSync.reload);
+  gulp.watch('./app/**/*.jsx', ['bundle'], browserSync.reload);
+  gulp.watch('./server/**/*.js', ['bundle'], browserSync.reload);
 });
 
 gulp.task('copy', () => {
@@ -42,7 +34,11 @@ gulp.task('bundle', ['copy'], () =>
      entries: './app/main.jsx',
      debug: true,
    })
+  .transform(babelify)
   .transform(reactify)
+  .transform(babelify.configure({
+    sourceMaps: true,
+  }))
   .bundle()
   .pipe(source('app.js'))
   .pipe(gulp.dest('./.tmp'))
