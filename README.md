@@ -5,8 +5,8 @@ An isomorphic application with express and react. It's a glocery item store that
 1. Clone the [repository](https://github.com/andela-rekemezie/isomorphic-app).
 2. Install [node](https://nodejs.org/en/) if you don't have it install already.
 3. Install [Mongodb](https://www.mongodb.com/download-center?jmp=nav#community) if you don't have it install already.
-4. Run `npm install -g gulp`.
-5. Run `npm install`.
+4. Run `npm install -g gulp bower`.
+5. Run `npm install && bower install`.
 
 ## Usage
 Run `gulp`
